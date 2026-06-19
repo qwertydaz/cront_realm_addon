@@ -22,7 +22,7 @@ const displayDeathCounter = (player: Player) => {
   const deathCount = deathsObjective.addScore(player, 1);
   const timesText = deathCount === 1 ? 'time' : 'times';
 
-  world.sendMessage(`${player.name} has died ${deathCount} ${timesText}.`);
+  world.sendMessage(`${player.name} has died ${deathCount} ${timesText}`);
 };
 
 export default displayDeathCounter;
