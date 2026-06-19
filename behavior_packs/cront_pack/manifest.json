@@ -1,13 +1,13 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Cront Realm Add-On",
-    "description": "Cront Realm Add-On Behavior Pack",
+    "name": "Cront Pack",
+    "description": "Funny Scripts for Minecraft Bedrock Edition Realm",
     "uuid": "30a89112-6a35-4dd6-8e22-bfdad5ed878c",
     "version": [
       1,
       0,
-      0
+      3
     ],
     "min_engine_version": [
       1,
@@ -17,11 +17,11 @@
   },
   "modules": [
     {
-      "description": "Behavior",
+      "description": "Behaviour",
       "version": [
         1,
         0,
-        0
+        3
       ],
       "uuid": "d04e4bf2-e553-42a8-ae72-a6a1bd1e3f5d",
       "type": "data"
@@ -40,14 +40,6 @@
     }
   ],
   "dependencies": [
-    {
-      "uuid": "f2fc63bf-30e5-4566-b48b-f4565b9682c2",
-      "version": [
-        1,
-        0,
-        0
-      ]
-    },
     {
       "module_name": "@minecraft/server",
       "version": [

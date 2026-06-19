@@ -6,7 +6,7 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN npm run mcaddon
+RUN npm run mcpack
 
 
 FROM alpine:3 AS artifacts

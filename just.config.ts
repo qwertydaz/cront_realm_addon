@@ -7,13 +7,12 @@ import {
   cleanCollateralTask,
   copyTask,
   coreLint,
-  mcaddonTask,
   setupEnvironment,
-  ZipTaskParameters,
   STANDARD_CLEAN_PATHS,
   DEFAULT_CLEAN_DIRECTORIES,
   getOrThrowFromProcess,
   watchTask,
+  zipTask,
 } from '@minecraft/core-build-tasks';
 import path from 'node:path';
 
@@ -33,13 +32,9 @@ const bundleTaskOptions: BundleTaskParameters = {
 const copyTaskOptions: CopyTaskParameters = {
   copyToBehaviorPacks: [`./behavior_packs/${projectName}`],
   copyToScripts: ['./dist/scripts'],
-  copyToResourcePacks: [`./resource_packs/${projectName}`],
 };
 
-const mcaddonTaskOptions: ZipTaskParameters = {
-  ...copyTaskOptions,
-  outputFile: `./dist/packages/${projectName}.mcaddon`,
-};
+const behaviorPackOutput = `./dist/packages/${projectName}.mcpack`;
 
 task('lint', coreLint(['scripts/**/*.ts'], argv().fix));
 task('typescript', tscTask());
@@ -53,9 +48,15 @@ task('package', series('clean-collateral', 'copyArtifacts'));
 task(
   'local-deploy',
   watchTask(
-    ['scripts/**/*.ts', 'behavior_packs/**/*.{json,lang,tga,ogg,png}', 'resource_packs/**/*.{json,lang,tga,ogg,png}'],
+    ['scripts/**/*.ts', 'behavior_packs/**/*.{json,lang,tga,ogg,png}'],
     series('clean-local', 'build', 'package')
   )
 );
-task('createMcaddonFile', mcaddonTask(mcaddonTaskOptions));
-task('mcaddon', series('clean-local', 'build', 'createMcaddonFile'));
+task(
+  'createBehaviorPack',
+  zipTask(behaviorPackOutput, [
+    { contents: copyTaskOptions.copyToBehaviorPacks ?? [] },
+    { contents: copyTaskOptions.copyToScripts ?? [], targetPath: 'scripts' },
+  ])
+);
+task('mcpack', series('clean-local', 'build', 'createBehaviorPack'));

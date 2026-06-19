@@ -1,6 +1,6 @@
-# Cront Realm Add-On
+# Cront Pack
 
-This repository contains the codebase for a **Minecraft Bedrock Edition Add-On**, including behavior/resource packs and TypeScript game scripts.
+This repository contains the codebase for a **Minecraft Bedrock Edition Behaviour Pack** and TypeScript game scripts.
 
 ## Contributing Guide
 
@@ -25,6 +25,6 @@ This repository contains the codebase for a **Minecraft Bedrock Edition Add-On**
 
 1. Start watch mode (rebuilds and redeploys on save):
    - `npm run local-deploy:watch`
-2. Create a Minecraft world and apply the add-on (local-deploy will have mounted it to your local Minecraft files)
+2. Create a Minecraft world and apply the behaviour pack (local-deploy will have mounted it to your local Minecraft files)
 3. Edit TypeScript in `scripts/`.
 4. In-game, run `/reload` to pick up script changes. To restart the world, use `/reload all`.

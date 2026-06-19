@@ -4,8 +4,6 @@
 # whitelist
 !behavior_packs/
 !behavior_packs/**
-!resource_packs/
-!resource_packs/**
 !scripts/
 !scripts/**
 !package.json

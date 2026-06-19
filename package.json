@@ -1,7 +1,7 @@
 {
-  "name": "cront_realm",
+  "name": "cront_pack",
   "version": "1.0.3",
-  "productName": "Cront Realm Add-On",
+  "productName": "Cront Pack",
   "description": "Funny Scripts for Minecraft Bedrock Edition Realms",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
     "clean:install": "rm -rf node_modules package-lock.json && npm i",
     "local-deploy": "just-scripts local-deploy",
     "local-deploy:watch": "just-scripts local-deploy --watch",
-    "mcaddon": "just-scripts mcaddon",
+    "mcpack": "just-scripts mcpack",
     "enablemcloopback": "CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436",
     "enablemcpreviewloopback": "CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-424268864-5579737-879501358-346833251-474568803-887069379-4040235476"
   },

@@ -13,19 +13,19 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Build Docker artifacts image
-        run: docker build --target artifacts -t cront-addon-artifacts:latest .
+        run: docker build --target artifacts -t cront-pack-artifacts:latest .
 
       - name: Extract artifacts from image
         shell: bash
         run: |
           set -euo pipefail
-          cid=$(docker create cront-addon-artifacts:latest)
+          cid=$(docker create cront-pack-artifacts:latest)
           mkdir -p artifact-out
           docker cp "$cid:/out/packages" ./artifact-out/packages
           docker rm "$cid"
 
-      - name: Attach .mcaddon to GitHub release
+      - name: Attach .mcpack to GitHub release
         uses: softprops/action-gh-release@v3
         with:
-          files: artifact-out/packages/**/*.mcaddon
+          files: artifact-out/packages/**/*.mcpack
           fail_on_unmatched_files: true

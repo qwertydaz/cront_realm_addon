@@ -1,4 +1,4 @@
-import handlePlayerDeath from './handle-player-death';
+import handleEntityRespawn from './handle-entity-respawn';
 import handlePlayerSpawn from './handle-player-spawn';
 
-export { handlePlayerDeath, handlePlayerSpawn };
+export { handleEntityRespawn, handlePlayerSpawn };
