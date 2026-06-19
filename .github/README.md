@@ -12,9 +12,7 @@ This repository contains the codebase for a **Minecraft Bedrock Edition Behaviou
 3. Commit and push your branch.
 4. Open a Pull Request targeting `main`.
 
-
 ### Local Development
-
 
 #### Setup
 
