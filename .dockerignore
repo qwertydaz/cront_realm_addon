@@ -10,6 +10,6 @@
 !scripts/**
 !package.json
 !package-lock.json
-just.config.ts
-tsconfig.json
-.env
+!just.config.ts
+!tsconfig.json
+!.env

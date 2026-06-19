@@ -1,20 +1,16 @@
-name: Build Cront Realm Add-On
+name: Release Artifacts
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
-  build-and-upload:
+  publish-artifacts:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Build Docker artifacts image
         run: docker build --target artifacts -t cront-addon-artifacts:latest .
@@ -32,5 +28,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mcaddon-packages
-          path: artifact-out/packages/**/*.mcaddon
+          path: |
+            artifact-out/packages/**/*.mcaddon
+            artifact-out/packages/**/*.mcpack
           if-no-files-found: error

@@ -1,0 +1,17 @@
+name: Build Add-On
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker artifacts image
+        run: docker build --target artifacts -t cront-addon-artifacts:latest .
