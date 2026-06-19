@@ -1,18 +1,25 @@
-import { Player, world } from '@minecraft/server';
+import { Player, ScoreboardObjective, world } from '@minecraft/server';
 
-const getDeathCount = (player: Player): number => {
-  const playerScoreboard = player.scoreboardIdentity;
-  if (!playerScoreboard) return 0;
+const DEATHS_OBJECTIVE_ID = 'deaths';
 
-  const deathsObjective = world.scoreboard.getObjective('deaths');
-  if (!deathsObjective) return 0;
+const ensureDeathsObjective = (): ScoreboardObjective => {
+  const existing = world.scoreboard.getObjective(DEATHS_OBJECTIVE_ID);
+  if (existing) return existing;
 
-  const deathCount = deathsObjective.getScore(playerScoreboard);
-  return typeof deathCount === 'number' ? deathCount : 0;
+  return world.scoreboard.addObjective(DEATHS_OBJECTIVE_ID, 'Deaths');
+};
+
+export const registerPlayerDeathTracking = (player: Player): void => {
+  const deathsObjective = ensureDeathsObjective();
+
+  if (!deathsObjective.hasParticipant(player)) {
+    deathsObjective.setScore(player, 0);
+  }
 };
 
 const displayDeathCounter = (player: Player) => {
-  const deathCount = getDeathCount(player);
+  const deathsObjective = ensureDeathsObjective();
+  const deathCount = deathsObjective.addScore(player, 1);
   const timesText = deathCount === 1 ? 'time' : 'times';
 
   world.sendMessage(`${player.name} has died ${deathCount} ${timesText}.`);
