@@ -8,7 +8,7 @@ jobs:
   publish-artifacts:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v7
 
@@ -24,10 +24,8 @@ jobs:
           docker cp "$cid:/out/packages" ./artifact-out/packages
           docker rm "$cid"
 
-      - name: Upload .mcpack/.mcaddon
-        uses: actions/upload-artifact@v7
+      - name: Attach .mcaddon to GitHub release
+        uses: softprops/action-gh-release@v3
         with:
-          name: mcaddon-packages
-          path: |
-            artifact-out/packages/**/*.mcaddon
-          if-no-files-found: error
+          files: artifact-out/packages/**/*.mcaddon
+          fail_on_unmatched_files: true
