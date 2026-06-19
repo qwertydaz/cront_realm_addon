@@ -1,0 +1,40 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Cront Realm Add-On",
+    "description": "Cront Realm Add-On Resource Pack",
+    "uuid": "f2fc63bf-30e5-4566-b48b-f4565b9682c2",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "description": "Cront Realm Add-On Pack Resources",
+      "type": "resources",
+      "uuid": "dbcb211e-8e0f-43f4-86a4-224041888944",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "30a89112-6a35-4dd6-8e22-bfdad5ed878c",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

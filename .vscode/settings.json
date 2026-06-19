@@ -1,0 +1,42 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.ignoreLimitWarning": true,
+  "editor.formatOnSave": true,
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/lib": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+  "editor.tabSize": 2,
+  "eslint.useFlatConfig": true,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#4C0A64",
+    "titleBar.activeBackground": "#6A0E8C",
+    "titleBar.activeForeground": "#FDFAFE",
+    "titleBar.inactiveBackground": "#4C0A64",
+    "titleBar.inactiveForeground": "#FDFAFE",
+    "statusBar.background": "#4C0A64",
+    "statusBar.foreground": "#FDFAFE",
+    "statusBar.debuggingBackground": "#4C0A64",
+    "statusBar.debuggingForeground": "#FDFAFE",
+    "statusBar.noFolderBackground": "#4C0A64",
+    "statusBar.noFolderForeground": "#FDFAFE"
+  }
+}

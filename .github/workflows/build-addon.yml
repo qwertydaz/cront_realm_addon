@@ -1,0 +1,36 @@
+name: Build Cront Realm Add-On
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker artifacts image
+        run: docker build --target artifacts -t cront-addon-artifacts:latest .
+
+      - name: Extract artifacts from image
+        shell: bash
+        run: |
+          set -euo pipefail
+          cid=$(docker create cront-addon-artifacts:latest)
+          mkdir -p artifact-out
+          docker cp "$cid:/out/packages" ./artifact-out/packages
+          docker rm "$cid"
+
+      - name: Upload .mcpack/.mcaddon
+        uses: actions/upload-artifact@v4
+        with:
+          name: mcaddon-packages
+          path: artifact-out/packages/**/*.mcaddon
+          if-no-files-found: error

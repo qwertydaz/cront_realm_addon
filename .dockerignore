@@ -1,0 +1,15 @@
+# ignore everything
+**
+
+# whitelist
+!behavior_packs/
+!behavior_packs/**
+!resource_packs/
+!resource_packs/**
+!scripts/
+!scripts/**
+!package.json
+!package-lock.json
+just.config.ts
+tsconfig.json
+.env
